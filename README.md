@@ -11,6 +11,12 @@ Usage:
 </div>
 ```
 
+The color of the clear button (default #888) can be modified in the directive:
+
+```html
+<input type="text" ng-model="myModel" clearable-input="red">
+```
+
 Please see the comments in *clearableInput.js* for more details.
 
 Unit tests (*clearableInputSpec.js*) written using Jasmine (test runner: Karma).
