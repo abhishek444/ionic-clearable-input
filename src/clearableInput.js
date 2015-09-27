@@ -20,6 +20,7 @@ angular.module('starter', ['ionic'])
  * The parent node of the input should be a <div>.
  * The "clear icon" does not work in a <label> element.
  * Ionitron's answer: https://github.com/driftyco/ionic/issues/2311#issuecomment-74161442
+ * M. Hartington's answer: http://forum.ionicframework.com/t/cannot-tap-click-a-clear-search-icon-inside-an-input-label/4237/7
  *
  * Exemple of HTML code:
  * <div class="item item-input">
@@ -33,12 +34,6 @@ angular.module('starter', ['ionic'])
 function ClearableInput($compile) {
 	// limit to input element of specific types
 	var inputTypes = /^(text|search|number|tel|url|email|password)$/i;
-
-	// "clear icon" should not "stick" the right border of the container, give it some space
-	var iconCss = 'margin-right: 15px; color: #888';
-
-	// "clear icon" template (displayed only if container is "clearable")
-	var iconTemplate = '<i class="icon ion-android-close" ng-show="clearable" style="'+iconCss+'"></i>';
 
 	return {
 		restrict: 'A',
@@ -60,9 +55,13 @@ function ClearableInput($compile) {
 			// more "testable" when exposed in the scope...
 			isolateScope.clearInput = clearInput;
 
-			// build the "clear icon" and make it clear the <input> on click
+			// build and insert the "clear icon"
+			var iconCss = 'margin-right: 15px; ';
+			iconCss += 'color: '+ (attrs.clearableInput !== '' ? attrs.clearableInput : '#888');
+			var iconTemplate = '<i class="icon ion-android-close" ng-show="clearable" style="'+iconCss+'"></i>';
 			var clearIconElem = $compile(iconTemplate)(isolateScope);
 			elem.after(clearIconElem);
+			// make it clear the <input> on click
 			clearIconElem.bind('click', isolateScope.clearInput);
 
 			// --- Event-driven behavior ---
