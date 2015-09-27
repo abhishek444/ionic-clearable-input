@@ -27,6 +27,8 @@ angular.module('starter', ['ionic'])
  *     <input 	type="search" ng-model="ctrl.number" placeholder="Number"
  *				clearable-input required>
  * </div>
+ *
+ * @author VinceOPS https://github.com/VinceOPS
  */
 function ClearableInput($compile) {
 	// limit to input element of specific types
