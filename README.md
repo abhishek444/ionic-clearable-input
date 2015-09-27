@@ -3,6 +3,9 @@ Allows adding a "clear" button in &lt;input&gt; elements for Ionic Framework.
 
 ![alt tag](http://s14.postimg.org/h2b6xj6oh/screen.png)
 
+Displayed when: The input is focused and not empty.
+Hidden when: The input is empty and/or not focused.
+
 Usage:
 ```html
 <div class="item item-input">
